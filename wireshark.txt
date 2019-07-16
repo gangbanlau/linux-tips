@@ -1,0 +1,7 @@
+. troubleshoot connection issues
+  Q: Is it possible to have a filter which displays all TCP connection attempts , being [SYN] packages, which are NOT followed by a {SYN,ACK] acknowledgment from the destination host?
+  A: usually these are followed by a retransmission which can be found by using the filter:
+
+     tcp.flags==2 && tcp.time_relative>0
+
+     (You need to enable "Conversation Timestamps" in the TCP protocol preferences for this to work)
